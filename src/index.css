@@ -1,13 +1,313 @@
-body {
+@import "~/node_modules/bootswatch/dist/minty/bootstrap.min.css";
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+:root {
+  --background: linear-gradient(90deg, coral, rgb(242, 242, 242));
+  --background-dark: linear-gradient(
+    90deg,
+    rgb(199, 64, 190),
+    rgba(251, 248, 248, 0.474)
+  );
+}
+#light {
+  background-image: var(--background);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+p {
+  margin: 0;
+}
+div {
+  margin: 0;
+}
+/****************************************************************************/
+.container {
+  min-height: 100vh;
+  max-width: 100vw;
+  padding-bottom: 6.4rem;
+}
+/******************************************************************************/
+.form-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+}
+.switch-icon {
+  font-size: 3rem;
+}
+.switch-button {
+  padding: 1.2rem 2.2rem;
+}
+/****************************************************************************/
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 3.2rem;
+  margin: 2rem;
+}
+/***************************************************************************/
+.container-todolist {
+  background-color: rgba(241, 241, 249, 0.827);
+  max-width: 80rem;
+  max-height: 85vh;
+  padding: 3.2rem;
+  margin: 3.2rem auto;
+  border-radius: 0.6rem;
+  box-shadow: 1.2rem 1.4rem 1.4rem rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+/******************************************************************************/
+/*********scroll***************************************************************/
+.container-todolist::-webkit-scrollbar {
+  width: 10px;
+}
+.container-todolist::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: inset 0010px rgba(0, 0, 0, 0.1);
+}
+.container-todolist::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #3333333a;
+}
+.container-todolist::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+  background-color: rgba(255, 127, 80, 0.597);
+}
+/***************************************************************************************/
+.formlist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.btn-todo {
+  padding: 1.4rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 50rem;
+  border-bottom-right-radius: 50rem;
+}
+
+.input-todo {
+  max-width: 50rem;
+  padding: 1.2rem;
+  font-size: 1.4rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 50rem;
+  border-bottom-left-radius: 50rem;
+  border: none;
+}
+.input-search {
+  max-width: 58rem;
+  padding: 1.2rem;
+  font-size: 1.4rem;
+  border-radius: 50rem;
+  margin: 1rem auto;
+  border: none;
+}
+/********************************************************************************/
+.todos-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.todo-container {
+  word-break: break-all;
+  border: 1px solid #555;
+  color: #444;
+  overflow-wrap: break-word;
+  width: 50rem;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.icons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.icons {
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  color: rgb(238, 119, 119);
+}
+
+/*******************************************************************/
+.input-edit {
+  max-width: 50rem;
+  padding: 1.2rem;
+  font-size: 1.4rem;
+}
+.btn-edit {
+  padding: 1.5rem;
+}
+.formlist-edit {
+  width: 70rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+/****************************************************************************/
+.heading-empty {
+  text-align: center;
+  margin-top: 3.2rem;
+  color: #55555549;
+}
+/******************************************************************************/
+/*********Dark-Mode***********************************************************/
+#dark {
+  background-image: var(--background-dark);
+}
+#dark .title {
+  color: white;
+}
+#dark .heading-empty {
+  color: white;
+}
+#dark .todo-container {
+  border: 1px solid white;
+  color: white;
+}
+#dark .container-todolist {
+  background-color: rgba(46, 46, 46, 0.8);
+  box-shadow: 1.2rem 1.4rem 1.4rem rgba(255, 253, 253, 0.138);
+}
+
+#dark .container-todolist::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: transparent;
+}
+#dark .container-todolist::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+  background-color: rgba(215, 141, 204, 0.8);
+}
+
+/**************************************************************************/
+/*******responsive*********************************************************/
+
+@media (max-width: 1280px) {
+  .container-todolist::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+  }
+}
+@media (max-width: 1024px) {
+  .container-todolist::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: transparent;
+  }
+}
+
+@media (max-width: 912px) {
+  .container-todolist::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: transparent;
+  }
+}
+
+@media (max-width: 870px) {
+  .container-todolist::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: transparent;
+  }
+}
+
+@media (max-width: 550px) {
+  .btn-todo {
+    padding: 0.7rem;
+  }
+  .container-todolist {
+    max-width: 50rem;
+    max-height: 85vh;
+  }
+  .todo-container {
+    width: 40rem;
+  }
+  .input-edit {
+    max-width: 35rem;
+  }
+  .btn-edit {
+    padding: 1.3rem;
+  }
+}
+@media (max-width: 420px) {
+  .container-todolist::-webkit-scrollbar {
+    width: 5px;
+  }
+  .container-todolist::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: transparent;
+  }
+  .btn-todo {
+    padding: 0.7rem;
+  }
+  .container-todolist {
+    max-width: 40rem;
+    max-height: 85vh;
+  }
+  .todo-container {
+    width: 35rem;
+  }
+  .input-edit {
+    max-width: 30rem;
+  }
+  .btn-edit {
+    padding: 1.3rem;
+  }
+}
+
+@media (max-width: 395px) {
+  .container-todolist {
+    max-width: 36rem;
+    max-height: 85vh;
+  }
+  .todo-container {
+    width: 30rem;
+  }
+  .input-edit {
+    max-width: 26rem;
+  }
+  .btn-edit {
+    padding: 1.4rem;
+  }
+}
+@media (max-width: 300px) {
+  html {
+    font-size: 45%;
+  }
+  .title {
+    font-size: 2.4rem;
+  }
+  .container-todolist {
+    width: 35rem;
+    max-height: 85vh;
+  }
+  .todo-container {
+    width: 25rem;
+  }
+  .input-edit {
+    max-width: 20rem;
+  }
+  .btn-edit {
+    padding: 1.4rem;
+  }
 }
